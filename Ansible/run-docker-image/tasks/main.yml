@@ -1,0 +1,34 @@
+---
+- name: Install required packages
+  package:
+    name:
+      - python3-pip
+#      - virtualenv
+      - python3-setuptools
+
+- block:
+
+  - name: Install Docker Module for Python
+    pip:
+      name: docker
+      executable: pip3
+
+  - name: Pull Docker image
+    docker_image:
+      name: "{{ docker_container_image }}"
+      source: pull
+
+  - name: Create container
+    docker_container:
+      name: "{{ docker_container_name }}"
+      image: "{{ docker_container_image }}"
+      env:
+        HTPASSWD: "{{ htpasswd_users }}"
+      ports:
+        - "{{ docker_host_port }}:{{ docker_container_port }}"
+      state: started
+      detach: yes
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+

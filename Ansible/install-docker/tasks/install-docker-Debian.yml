@@ -1,0 +1,23 @@
+---
+- name: Install packages to allow apt to use a repository over HTTPS
+  package:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+
+- name: Add Docker’s official GPG key
+  apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+
+- name: set up the stable repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ansible_distribution|lower}} {{ansible_distribution_release}} stable
+
+- name: Install Docker Engine
+  package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present

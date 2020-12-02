@@ -1,0 +1,6 @@
+---
+docker_container_image: kropbg/hello_world
+docker_container_name:  hello_world
+docker_host_port:       80
+docker_container_port:  80
+htpasswd_users:         "admin2:$apr1$mXoshCTB$jLy85OXzap0dd7h3cT9eS0\nuser223:$apr1$CMgn9/k4$zqzlSPaXt3zSu3IwnelAV."

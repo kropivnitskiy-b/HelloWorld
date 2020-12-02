@@ -1,0 +1,39 @@
+---
+- name: Install needed packages
+  package:
+    name:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+    state: present
+
+#- name: Configure the docker-ce repo
+#  yum_repository:
+#    name: Docker
+#    description: Docker CentOS repo
+#    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+#    state: absent
+
+- name: Add Docker repository.
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: '/etc/yum.repos.d/docker-ce.repo'
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable Docker stable repo.
+  ini_file:
+    dest: '/etc/yum.repos.d/docker-ce.repo'
+    section: 'docker-ce-stable'
+    option: enabled
+    value: '1'
+    mode: 0644
+
+- name: Install docker-ce
+  package:
+    name:
+      - docker-ce
+#      - containerd.io
+    state: present
+

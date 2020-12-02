@@ -1,0 +1,8 @@
+---
+- include: "install-docker-{{ ansible_os_family }}.yml"
+
+- name: Start and enable Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes

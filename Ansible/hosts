@@ -1,0 +1,5 @@
+[test_group]
+#172.31.41.193
+#172.31.37.63 ansible_user=centos
+#172.31.41.24
+#172.31.44.235 ansible_user=ec2-user
