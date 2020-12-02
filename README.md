@@ -1,13 +1,13 @@
 # HelloWorld
 
 Status of Last Build:<br>
-<img src="https://github.com/kropivnitskiy-b/HelloWorld/workflows/Publish%20Docker/badge.svg?branch=main"><br>
+<img src="https://github.com/kropivnitskiy-b/HelloWorld/workflows/Publish%20Docker%20image/badge.svg?branch=main"><br>
 
 Simple project which:
 
-1. Contain a Dockerfile of nginx builds with pages:
-/ - "Hello World";
-/auth - "Hello World $USERNAME" with basic authentication
+1. Contain a Dockerfile of nginx builds with pages:<br>
+/ - "Hello World";<br>
+/auth - "Hello World $USERNAME" with basic authentication.<br>
 Pass and username set by ENV HTPASSWD in Dockerfile
 
 2. GiHub Action builds and publishing Docker image to Docker Hub
